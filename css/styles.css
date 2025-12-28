@@ -1,0 +1,9 @@
+/* css/styles.css */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.card-header {
+  font-weight: 600;
+}
