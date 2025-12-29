@@ -1,0 +1,38 @@
+name: CI Dashboard Calidad del Aire
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar dependencias (opcional)
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "No hay package.json, se omite instalación."
+          fi
+
+      - name: Verificar estructura del proyecto
+        run: |
+          test -f index.html
+          test -d css
+          test -d js
+          echo "Estructura básica verificada."
+
+      - name: Paso de despliegue (futuro)
+        run: echo "Aquí se integraría el despliegue automático en Azure Static Web Apps o similar."
